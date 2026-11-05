@@ -12,13 +12,13 @@
 <style>
 :root{
   --bg:#F2F5F7; --panel:#FFFFFF; --ink:#13202B; --muted:#53636F; --line:#D5DDE3;
-  --accent:#0B7A86; --accent-ink:#FFFFFF; --bar:#0B7A86; --bar-alt:#C9D4DB; --now:#E3A21A;
+  --accent:#0B7A86; --bar:#0B7A86; --bar-alt:#C9D4DB; --now:#E3A21A;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
+  :root{
     --bg:#0F171D; --panel:#16212A; --ink:#E7EEF2; --muted:#9BAAB5; --line:#27363F;
-    --accent:#3FC1CE; --accent-ink:#0F171D; --bar:#3FC1CE; --bar-alt:#2C3D48; --now:#F0B73A;
+    --accent:#3FC1CE; --bar:#3FC1CE; --bar-alt:#2C3D48; --now:#F0B73A;
     color-scheme:dark;
   }
 }
@@ -26,35 +26,44 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 "IBM Plex Sans",system-ui,sans-serif}
 a{color:var(--accent)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--now);outline-offset:2px}
-h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--now);outline-offset:2px}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
 .wrap{max-width:1080px;margin:0 auto;padding:clamp(1.25rem,4vw,3rem);display:grid;gap:2.5rem;grid-template-columns:300px 1fr;align-items:start}
 aside{position:sticky;top:2rem}
+.photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--panel);box-shadow:0 0 0 1px var(--line);display:block;margin-bottom:1.25rem}
 h1{font-size:2.6rem;font-weight:800;letter-spacing:-.02em}
-.role{margin:.6rem 0 1.5rem;color:var(--muted)}
-.contact{list-style:none;margin:0 0 1.75rem;padding:0;display:grid;gap:.35rem}
+.role{margin:.6rem 0 1.25rem;color:var(--muted)}
+.contact{margin:0 0 1.5rem}
 .group{margin-top:1.4rem}
 .group h3{font-size:.95rem;font-weight:700;margin-bottom:.45rem}
 .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin:0;padding:0;list-style:none}
 .chips li{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.1rem .55rem;font-size:.85rem}
 main{display:grid;gap:2.5rem;min-width:0}
 section h2{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
-.lead{font-size:1.15rem;max-width:62ch}
+.lead{font-size:1.15rem;max-width:62ch;margin:0}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.25rem}
-.tl{display:grid;gap:.55rem}
-.tl-axis,.tl-row{display:grid;grid-template-columns:9.5rem 1fr;gap:.75rem;align-items:center;font-size:.85rem}
-.tl-axis span.ticks{position:relative;height:1.2rem;color:var(--muted)}
-.ticks i{position:absolute;font-style:normal;transform:translateX(-50%)}
-.track{position:relative;height:1.1rem;background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/calc(100%/7) 100%}
+.tl{display:grid;gap:.6rem}
+.tl-axis,.tl-row{display:grid;grid-template-columns:11rem 1fr;gap:.75rem;align-items:center;font-size:.85rem}
+.tl-row small{display:block;color:var(--muted)}
+.ticks{position:relative;height:1.2rem;color:var(--muted)}
+.ticks i{position:absolute;font-style:normal}
+.ticks i:last-child{right:0}
+.track{position:relative;height:1.1rem;background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/calc(100%/13) 100%}
 .bar{position:absolute;top:0;bottom:0;border-radius:4px;background:var(--bar)}
 .bar.alt{background:var(--bar-alt)}
 .bar.now{background:var(--now)}
-.job{padding:0 0 1.75rem 1.25rem;border-left:2px solid var(--line);margin-left:.3rem;position:relative}
+.job{padding:0 0 2rem 1.25rem;border-left:2px solid var(--line);margin-left:.3rem;position:relative}
 .job:last-child{padding-bottom:0}
 .job::before{content:"";position:absolute;left:-7px;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--bar);border:2px solid var(--bg)}
-.job h3{font-size:1.2rem;font-weight:700}
-.meta{color:var(--muted);font-size:.9rem;margin:.2rem 0 .7rem}
-.job ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem;max-width:70ch}
+.job h3{font-size:1.25rem;font-weight:700}
+.meta{color:var(--muted);font-size:.9rem;margin:.2rem 0 .9rem}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin:0 0 1rem}
+.card{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--bar);border-radius:8px;padding:.85rem 1rem}
+.card h4{font-size:1rem;font-weight:700;margin-bottom:.35rem}
+.card p{margin:0;font-size:.92rem;color:var(--muted);line-height:1.5}
+details summary{cursor:pointer;color:var(--accent);font-size:.92rem;font-weight:500;width:fit-content}
+.job ul{margin:.6rem 0 0;padding-left:1.1rem;display:grid;gap:.35rem;max-width:70ch}
+.job > ul{margin-top:0}
 .edu{display:grid;gap:.6rem}
 .edu p{margin:0}
 .edu span{color:var(--muted)}
@@ -63,7 +72,7 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
   .wrap{grid-template-columns:1fr}
   aside{position:static}
   h1{font-size:2.2rem}
-  .tl-axis,.tl-row{grid-template-columns:6.5rem 1fr;font-size:.78rem}
+  .tl-axis,.tl-row{grid-template-columns:7.5rem 1fr;font-size:.78rem}
 }
 @media (prefers-reduced-motion:no-preference){
   .bar{transform-origin:left;animation:grow .9s ease-out both}
@@ -74,11 +83,10 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
 <body>
 <div class="wrap">
   <aside>
+    <img class="photo" src="profile.jpg" alt="Portrait of Joshua John Bea" width="120" height="120">
     <h1>Joshua John Bea</h1>
     <p class="role">Business Operations Analyst<br>Taguig City, Philippines</p>
-    <ul class="contact">
-      <li><a href="mailto:joshua.bea28@gmail.com">joshua.bea28@gmail.com</a></li>
-    </ul>
+    <p class="contact"><a href="mailto:joshua.bea28@gmail.com">joshua.bea28@gmail.com</a></p>
 
     <div class="group"><h3>Business intelligence</h3>
       <ul class="chips"><li>Power BI</li><li>DAX</li><li>Power Apps</li><li>KPI design</li><li>Forecasting</li><li>Capacity planning</li></ul></div>
@@ -87,7 +95,7 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
     <div class="group"><h3>AI and automation</h3>
       <ul class="chips"><li>Claude</li><li>AI adoption</li><li>Workflow automation</li><li>Skill creation</li></ul></div>
     <div class="group"><h3>Business and leadership</h3>
-      <ul class="chips"><li>Requirements gathering</li><li>Stakeholder management</li><li>Process improvement</li><li>Coaching</li><li>Project management</li></ul></div>
+      <ul class="chips"><li>Requirements gathering</li><li>Stakeholder management</li><li>Process improvement</li><li>Coaching and upskilling</li><li>Project management</li></ul></div>
     <div class="group"><h3>Languages and certification</h3>
       <ul class="chips"><li>English</li><li>Filipino</li><li>Japanese (beginner)</li><li>Lean Six Sigma Yellow Belt</li></ul></div>
   </aside>
@@ -101,14 +109,12 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
     <section aria-labelledby="path">
       <h2 id="path">Career at a glance</h2>
       <div class="panel">
-        <div class="tl" role="img" aria-label="Timeline: BS Aircraft Maintenance Technology 2013 to 2017; Duty Desk Intern 2019 to 2021; Duty Desk Specialist 2021 to 2024; Performance and Planning Control Specialist 2024 to 2025; Business Operations Analyst 2025 to present.">
-          <div class="tl-axis"><span></span><span class="ticks">
-            <i style="left:0">2013</i><i style="left:28.57%">2017</i><i style="left:57.14%">2021</i><i style="left:85.71%">2025</i></span></div>
-          <div class="tl-row"><span>Education</span><div class="track"><div class="bar alt" style="left:0;width:28.57%"></div></div></div>
-          <div class="tl-row"><span>Duty Desk Intern</span><div class="track"><div class="bar" style="left:42.86%;width:14.29%"></div></div></div>
-          <div class="tl-row"><span>Duty Desk Specialist</span><div class="track"><div class="bar" style="left:57.14%;width:21.43%"></div></div></div>
-          <div class="tl-row"><span>Planning Control</span><div class="track"><div class="bar" style="left:78.57%;width:7.14%"></div></div></div>
-          <div class="tl-row"><span>Business Ops Analyst</span><div class="track"><div class="bar now" style="left:85.71%;width:12.5%"></div></div></div>
+        <div class="tl" role="img" aria-label="Timeline with no gaps: BS Aircraft Maintenance Technology 2013 to 2017, Lufthansa Services Philippines 2017 to 2025, NiCE inContact Philippines 2025 to present.">
+          <div class="tl-axis"><span></span><span class="ticks" aria-hidden="true">
+            <i style="left:0">2013</i><i style="left:30.77%;transform:translateX(-50%)">2017</i><i style="left:92.31%;transform:translateX(-50%)">2025</i><i>Now</i></span></div>
+          <div class="tl-row"><span>Education<small>2013 to 2017</small></span><div class="track"><div class="bar alt" style="left:0;width:30.77%"></div></div></div>
+          <div class="tl-row"><span>Lufthansa Services<small>2017 to 2025</small></span><div class="track"><div class="bar" style="left:30.77%;width:61.54%"></div></div></div>
+          <div class="tl-row"><span>NiCE inContact<small>2025 to present</small></span><div class="track"><div class="bar now" style="left:92.31%;width:7.69%"></div></div></div>
         </div>
       </div>
     </section>
@@ -119,29 +125,44 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
       <article class="job">
         <h3>Business Operations Analyst</h3>
         <p class="meta">NiCE inContact Philippines · 2025 to present</p>
-        <ul>
-          <li>Partner with C-level executives and senior stakeholders to turn strategic objectives and business questions into technical requirements and data solutions.</li>
-          <li>Design and maintain executive dashboards in Power BI, drawing on Snowflake, Salesforce and internal databases.</li>
-          <li>Bring monday.com data into Power BI reporting through SQL and API integration.</li>
-          <li>Monitor Fabric and Power BI capacity to find heavy-consuming datasets and optimize them to cut CU consumption.</li>
-          <li>Add Python visuals (pandas, matplotlib, seaborn) for deeper analysis.</li>
-          <li>Integrate Power Apps with Power BI so reports lead to action and better decisions.</li>
-          <li>Proposed a skill-making process for Claude so the team can run consistent, reusable AI-assisted workflows, and use Claude for automation across team workflows.</li>
-          <li>Work with cross-functional teams on process improvements tied to business goals.</li>
-        </ul>
+        <div class="projects">
+          <div class="card"><h4>Standardized AI skill usage</h4><p>Proposed a shared way for the team to use Claude skills, so AI training and everyday AI work stay consistent and reusable.</p></div>
+          <div class="card"><h4>SOPs for AI usage</h4><p>Contributed to the team’s standard operating procedures for AI, documenting how AI is used across team workflows.</p></div>
+          <div class="card"><h4>Consolidated reporting view</h4><p>Built one reporting view that combines Wiser and Salesforce data in a single place.</p></div>
+        </div>
+        <details>
+          <summary>Day-to-day responsibilities</summary>
+          <ul>
+            <li>Partner with C-level executives and senior stakeholders to turn strategic objectives and business questions into technical requirements and data solutions.</li>
+            <li>Design and maintain executive dashboards in Power BI, drawing on Snowflake, Salesforce and internal databases.</li>
+            <li>Bring monday.com data into Power BI reporting through SQL and API integration.</li>
+            <li>Monitor Fabric and Power BI capacity to find heavy-consuming datasets and optimize them to cut CU consumption.</li>
+            <li>Add Python visuals (pandas, matplotlib, seaborn) for deeper analysis.</li>
+            <li>Integrate Power Apps with Power BI so reports lead to action and better decisions.</li>
+            <li>Use Claude for automation and AI adoption across team workflows.</li>
+            <li>Work with cross-functional teams on process improvements tied to business goals.</li>
+          </ul>
+        </details>
       </article>
 
       <article class="job">
         <h3>Performance and Planning Control Specialist</h3>
         <p class="meta">Lufthansa Services Philippines · 2024 to 2025</p>
-        <ul>
-          <li>Built performance metrics and KPIs, and worked with a global team on yearly budgets and forecasts.</li>
-          <li>Used historical data to guide capacity planning and resource allocation.</li>
-          <li>Migrated Excel-based reports to Power BI for better visualization, accuracy and access.</li>
-          <li>Wrote advanced DAX to improve forecasting accuracy and workforce analysis.</li>
-          <li>Streamlined data workflows and cut reporting turnaround time by 50%.</li>
-          <li>Designed a lesson plan and ran workshops and one-on-one coaching that taught a team with no data background analysis, Excel formulas and Power BI reporting.</li>
-        </ul>
+        <div class="projects">
+          <div class="card"><h4>Excel to Power BI</h4><p>Moved reporting from Excel to Power BI, improving visualization, accuracy and accessibility.</p></div>
+          <div class="card"><h4>Intern program refinement</h4><p>Refined the intern program to support business continuity and skills transfer.</p></div>
+          <div class="card"><h4>Zero-to-operational lesson plan</h4><p>Drafted a lesson plan for the intern program that takes someone with no Excel or Power BI knowledge to operational skill level.</p></div>
+        </div>
+        <details>
+          <summary>Day-to-day responsibilities</summary>
+          <ul>
+            <li>Built performance metrics and KPIs, and worked with a global team on yearly budgets and forecasts.</li>
+            <li>Used historical data to guide capacity planning and resource allocation.</li>
+            <li>Wrote advanced DAX to improve forecasting accuracy and workforce analysis.</li>
+            <li>Streamlined data workflows and cut reporting turnaround time by 50%.</li>
+            <li>Ran hands-on workshops and one-on-one coaching that built the team’s skills in data analysis, Excel formulas and Power BI reporting.</li>
+          </ul>
+        </details>
       </article>
 
       <article class="job">
@@ -160,7 +181,7 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
         <ul>
           <li>Supported the Global Steering team with training and global meetings.</li>
           <li>Worked with Team Leaders to keep service levels met and abandonment within target.</li>
-          <li>Troubleshot errors in local and global reports, and kept exception codes accurate for shrinkage reporting.</li>
+          <li>Troubleshot report errors in local and global data, and kept exception codes accurate for shrinkage reporting.</li>
         </ul>
       </article>
     </section>
