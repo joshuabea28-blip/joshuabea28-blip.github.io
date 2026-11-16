@@ -29,7 +29,7 @@ a{color:var(--accent)}
 a:focus-visible,summary:focus-visible{outline:3px solid var(--now);outline-offset:2px}
 h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0}
 .wrap{max-width:1080px;margin:0 auto;padding:clamp(1.25rem,4vw,3rem);display:grid;gap:2.5rem;grid-template-columns:300px 1fr;align-items:start}
-aside{position:sticky;top:2rem}
+aside{position:sticky;top:2rem;align-self:start;max-height:calc(100vh - 4rem);overflow-y:auto;scrollbar-width:thin;padding-right:.25rem}
 .photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--panel);box-shadow:0 0 0 1px var(--line);display:block;margin-bottom:1.25rem}
 h1{font-size:2.6rem;font-weight:800;letter-spacing:-.02em}
 .role{margin:.6rem 0 1.25rem;color:var(--muted)}
@@ -48,7 +48,7 @@ section h2{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
 .ticks{position:relative;height:1.2rem;color:var(--muted)}
 .ticks i{position:absolute;font-style:normal}
 .ticks i:last-child{right:0}
-.track{position:relative;height:1.1rem;background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/calc(100%/9) 100%}
+.track{position:relative;height:1.1rem;background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/calc(100%/8) 100%}
 .bar{position:absolute;top:0;bottom:0;border-radius:4px;background:var(--bar)}
 .bar.alt{background:var(--bar-alt)}
 .bar.now{background:var(--now)}
@@ -67,10 +67,10 @@ details summary{cursor:pointer;color:var(--accent);font-size:.92rem;font-weight:
 .edu{display:grid;gap:.6rem}
 .edu p{margin:0}
 .edu span{color:var(--muted)}
-footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1rem}
+footer{width:min(1080px,100% - 2*clamp(1.25rem,4vw,3rem));margin:0 auto 2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1rem}
 @media (max-width:820px){
   .wrap{grid-template-columns:1fr}
-  aside{position:static}
+  aside{position:static;max-height:none;overflow:visible}
   h1{font-size:2.2rem}
   .tl-axis,.tl-row{grid-template-columns:7.5rem 1fr;font-size:.78rem}
 }
@@ -109,11 +109,11 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
     <section aria-labelledby="path">
       <h2 id="path">Career at a glance</h2>
       <div class="panel">
-        <div class="tl" role="img" aria-label="Timeline with no gaps: Lufthansa Services Philippines 2017 to 2025, then NiCE inContact Philippines 2025 to present.">
+        <div class="tl" role="img" aria-label="Timeline with no gaps: Lufthansa Services Philippines 2018 to 2025, then NiCE inContact Philippines 2025 to present.">
           <div class="tl-axis"><span></span><span class="ticks" aria-hidden="true">
-            <i style="left:0">2017</i><i style="left:88.89%;transform:translateX(-50%)">2025</i></span></div>
-          <div class="tl-row"><span>Lufthansa Services<small>2017 to 2025</small></span><div class="track"><div class="bar" style="left:0;width:88.89%"></div></div></div>
-          <div class="tl-row"><span>NiCE inContact<small>2025 to present</small></span><div class="track"><div class="bar now" style="left:88.89%;width:11.11%"></div></div></div>
+            <i style="left:0">2018</i><i style="left:87.5%;transform:translateX(-50%)">2025</i></span></div>
+          <div class="tl-row"><span>Lufthansa Services<small>2018 to 2025</small></span><div class="track"><div class="bar" style="left:0;width:87.5%"></div></div></div>
+          <div class="tl-row"><span>NiCE inContact<small>2025 to present</small></span><div class="track"><div class="bar now" style="left:87.5%;width:12.5%"></div></div></div>
         </div>
       </div>
     </section>
@@ -125,9 +125,9 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
         <h3>Business Operations Analyst</h3>
         <p class="meta">NiCE inContact Philippines · 2025 to present</p>
         <div class="projects">
-          <div class="card"><h4>Standardized AI skill usage</h4><p>Proposed a shared way for the team to use Claude skills, so AI training and everyday AI work stay consistent and reusable.</p></div>
-          <div class="card"><h4>SOPs for AI usage</h4><p>Contributed to the team’s standard operating procedures for AI, documenting how AI is used across team workflows.</p></div>
-          <div class="card"><h4>Consolidated reporting view</h4><p>Built one reporting view that combines Wiser and Salesforce data in a single place.</p></div>
+          <div class="card"><h4>Standardized AI Skill Framework</h4><p>Proposed a standardized approach to Claude skill usage across the team, enabling structured AI training and consistent, reusable AI-assisted workflows.</p></div>
+          <div class="card"><h4>AI Usage Standard Operating Procedures</h4><p>Helped define the team’s SOPs for AI usage, establishing clear, repeatable practices for applying AI in daily workflows.</p></div>
+          <div class="card"><h4>Unified Wiser and Salesforce Reporting</h4><p>Developed a consolidated reporting view that integrates Wiser and Salesforce data, giving stakeholders one place to see the full picture.</p></div>
         </div>
         <details>
           <summary>Day-to-day responsibilities</summary>
@@ -148,9 +148,9 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
         <h3>Performance and Planning Control Specialist</h3>
         <p class="meta">Lufthansa Services Philippines · 2024 to 2025</p>
         <div class="projects">
-          <div class="card"><h4>Excel to Power BI</h4><p>Moved reporting from Excel to Power BI, improving visualization, accuracy and accessibility.</p></div>
-          <div class="card"><h4>Intern program refinement</h4><p>Refined the intern program to support business continuity and skills transfer.</p></div>
-          <div class="card"><h4>Zero-to-operational lesson plan</h4><p>Drafted a lesson plan for the intern program that takes someone with no Excel or Power BI knowledge to operational skill level.</p></div>
+          <div class="card"><h4>Reporting Modernization: Excel to Power BI</h4><p>Transitioned Excel-based reporting to Power BI, improving the visualization, accuracy and accessibility of key reports.</p></div>
+          <div class="card"><h4>Intern Program Redesign</h4><p>Refined the intern program to strengthen business continuity and enable structured skills transfer across the team.</p></div>
+          <div class="card"><h4>Data Skills Training Curriculum</h4><p>Authored a structured lesson plan that builds Excel and Power BI skills from zero knowledge to operational proficiency.</p></div>
         </div>
         <details>
           <summary>Day-to-day responsibilities</summary>
@@ -176,11 +176,20 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
 
       <article class="job">
         <h3>Duty Desk Intern</h3>
-        <p class="meta">Lufthansa Services Philippines · 2019 to 2021</p>
+        <p class="meta">Lufthansa Services Philippines · Jul 2019 – Jun 2021</p>
         <ul>
           <li>Supported the Global Steering team with training and global meetings.</li>
           <li>Worked with Team Leaders to keep service levels met and abandonment within target.</li>
           <li>Troubleshot report errors in local and global data, and kept exception codes accurate for shrinkage reporting.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>Customer Service Representative</h3>
+        <p class="meta">Lufthansa Services Philippines · Jan 2018 – Jul 2019</p>
+        <ul>
+          <li>Handled passenger requests using the Amadeus Global Distribution System (GDS).</li>
+          <li>Served passengers at every level, up to premium customers with membership status.</li>
         </ul>
       </article>
     </section>
@@ -194,8 +203,8 @@ footer{grid-column:1/-1;color:var(--muted);font-size:.85rem;border-top:1px solid
     </section>
   </main>
 
-  <footer>© <span id="y">2026</span> Joshua John Bea. References available upon request.</footer>
 </div>
+<footer>© <span id="y">2026</span> Joshua John Bea. References available upon request.</footer>
 <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
 </body>
 </html>
